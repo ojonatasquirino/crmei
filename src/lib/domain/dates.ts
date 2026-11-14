@@ -1,0 +1,13 @@
+import type { ISODate } from "./types";
+const pad = (n: number) => String(n).padStart(2, "0");
+export const toISO = (d: Date): ISODate => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+export const fromISO = (s: ISODate) => { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d); };
+export const addDays = (s: ISODate, n: number) => { const d = fromISO(s); d.setDate(d.getDate() + n); return toISO(d); };
+export const monthOf = (s: ISODate) => s.slice(0, 7);
+export const addMonths = (ym: string, n: number) => { const [y, m] = ym.split("-").map(Number); const d = new Date(y, m - 1 + n, 1); return `${d.getFullYear()}-${pad(d.getMonth() + 1)}`; };
+export const daysInMonth = (ym: string) => { const [y, m] = ym.split("-").map(Number); return new Date(y, m, 0).getDate(); };
+export const todayISO = () => toISO(new Date());
+const MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+const MESES_LONGOS = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+export const shortDate = (s: ISODate) => { const d = fromISO(s); return `${pad(d.getDate())} ${MESES[d.getMonth()]}`; };
+export const monthLabel = (ym: string, long = false) => { const m = Number(ym.slice(5, 7)) - 1; return long ? MESES_LONGOS[m] : MESES[m]; };

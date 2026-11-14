@@ -1,0 +1,68 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #F5F8F4;
+  --surface: #FFFFFF;
+  --surface-2: #EEF6E8;
+  --border: #E2E9E1;
+  --border-strong: #D3DDD1;
+  --foreground: #17322A;
+  --muted: #5B6C63;
+  --primary: #1F5A3D;
+  --primary-foreground: #FFFFFF;
+  --accent: #DDF5CF;
+  --lime: #8FDE5D;
+  --line: #3E9E22;
+  --positive: #2A7F1C;
+  --negative: #C2601C;
+  --warn-bg: #FFF6EE;
+  --warn-border: #F1D3BA;
+  --warn-fg: #7A4A26;
+  --highlight: #EAF8E0;
+}
+.dark {
+  --background: #06140E;
+  --surface: #0B1F16;
+  --surface-2: #12301F;
+  --border: #173527;
+  --border-strong: #23452F;
+  --foreground: #E6F4EA;
+  --muted: #93AE9F;
+  --primary: #7ED957;
+  --primary-foreground: #0B2416;
+  --accent: #1C4A30;
+  --lime: #8FDE5D;
+  --line: #8FDE5D;
+  --positive: #8FDE5D;
+  --negative: #FDBA74;
+  --warn-bg: #1A1410;
+  --warn-border: #5A3A1C;
+  --warn-fg: #E2CDB9;
+  --highlight: #10301D;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-lime: var(--lime);
+  --color-line: var(--line);
+  --color-positive: var(--positive);
+  --color-negative: var(--negative);
+  --color-warn-bg: var(--warn-bg);
+  --color-warn-border: var(--warn-border);
+  --color-warn-fg: var(--warn-fg);
+  --color-highlight: var(--highlight);
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+}
+
+body { background: var(--background); color: var(--foreground); font-feature-settings: "tnum"; }
+* { border-color: var(--border); }
