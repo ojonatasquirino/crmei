@@ -6,7 +6,7 @@ import { auth } from "@/lib/firebase/client";
 import { useSession } from "@/lib/firebase/session";
 import { Button } from "@/components/ui/button";
 import { Field, Input } from "@/components/ui/input";
-import { Logo } from "@/components/logo";
+import { Logo, LogoMark } from "@/components/logo";
 
 export default function Login() {
   const { user, loading } = useSession();
@@ -38,17 +38,18 @@ export default function Login() {
   }
 
   return (
-    <div className="grid min-h-dvh md:grid-cols-2">
-      <section className="hidden flex-col justify-between border-r border-border bg-surface p-14 md:flex">
-        <Logo />
-        <div className="max-w-md">
+    <div className="grid min-h-dvh bg-[linear-gradient(150deg,#A6E57E_0%,#4FA44A_35%,#1F5A3D_65%,#0B2416_100%)] md:grid-cols-2">
+      <section className="hidden flex-col justify-between p-14 text-white md:flex">
+        <Logo inverted />
+        <div className="max-w-md rounded-3xl bg-[#0B2416]/55 p-8 backdrop-blur-sm">
+          <LogoMark className="mb-6 size-16 text-[#CDEFB0]" />
           <h2 className="text-4xl font-semibold leading-tight tracking-tight">Entenda o dinheiro do seu negócio em um minuto por dia.</h2>
-          <p className="mt-4 text-base leading-relaxed text-muted">Quanto você tem, quanto pode usar e se vai faltar nos próximos 90 dias. Feito para MEI e pequenos negócios.</p>
+          <p className="mt-4 text-base leading-relaxed text-white/85">Quanto você tem, quanto pode usar e se vai faltar nos próximos 90 dias. Feito para MEI e pequenos negócios.</p>
         </div>
-        <p className="text-xs text-muted">Seus dados ficam separados e protegidos.</p>
+        <p className="text-xs text-white/80">Seus dados ficam separados e protegidos.</p>
       </section>
       <section className="grid place-items-center p-6">
-        <div className="flex w-full max-w-sm flex-col gap-4">
+        <div className="flex w-full max-w-sm flex-col gap-4 rounded-3xl border border-border bg-surface p-7 shadow-2xl">
           <div className="md:hidden"><Logo /></div>
           <h1 className="text-[28px] font-semibold tracking-tight">Entrar</h1>
           <p className="-mt-2 text-sm text-muted">Use sua conta Google ou receba um link no e-mail.</p>
