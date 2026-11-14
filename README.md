@@ -7,24 +7,25 @@ Stack: Next.js 15 (App Router) · TypeScript · Tailwind v4 · componentes no pa
 
 ## Rodar local
 
-1. Crie um projeto no [Firebase Console](https://console.firebase.google.com).
-2. **Authentication › Sign-in method:** ative **Google** e **E-mail/link (login sem senha)**. Em *Settings › Authorized domains*, adicione o domínio da Vercel quando publicar.
-3. **Firestore Database:** crie em modo produção (região `southamerica-east1`).
-4. **Project settings › Your apps › Web app:** copie as chaves para `.env.local` (modelo em `.env.example`).
-5. Publique as regras de segurança:
-   ```bash
-   npx firebase-tools login
-   npx firebase-tools use --add   # escolha o projeto
-   npx firebase-tools deploy --only firestore:rules
-   ```
-6. Rode:
-   ```bash
-   npm install
-   npm run dev     # http://localhost:3000
-   npm test        # motor financeiro
-   ```
+O projeto Firebase já está criado e configurado: **crmei-86ea4** (Firestore em São Paulo, login Google e link por e-mail ativos, regras publicadas). As chaves públicas estão em `.env`.
 
-Deploy: importe o repositório na Vercel e cadastre as 4 variáveis `NEXT_PUBLIC_FIREBASE_*`.
+```bash
+npm install
+npm run dev     # http://localhost:3000
+npm test        # motor financeiro
+```
+
+Para republicar as regras depois de mudar `firestore.rules`:
+
+```bash
+npx firebase-tools login
+npx firebase-tools deploy --only firestore:rules
+```
+
+## Deploy na Vercel
+
+1. Importe o repositório na Vercel. O `.env` já vai junto, então não precisa cadastrar variáveis.
+2. Depois do primeiro deploy, adicione o domínio (ex.: `crmei.vercel.app`) em Firebase › Authentication › Configurações › Domínios autorizados. Sem isso, o login não funciona em produção.
 
 ## Regras financeiras (src/lib/domain)
 
